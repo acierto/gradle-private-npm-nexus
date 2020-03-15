@@ -1,0 +1,57 @@
+plugins {
+  id "groovy"
+  id "idea"
+  id "maven"
+  id 'net.researchgate.release' version '2.6.0'
+}
+
+group = 'com.acierto.gradle'
+defaultTasks 'build'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+  jcenter()
+  maven {
+    url "https://plugins.gradle.org/m2/"
+  }
+  mavenLocal()
+  maven {
+    credentials {
+      username project.property("nexusUserName")
+      password project.property("nexusPassword")
+    }
+    url "${project.property('nexusBaseUrl')}/repositories/releases"
+  }
+}
+
+idea {
+  module {
+    downloadJavadoc = true
+    downloadSources = true
+  }
+}
+
+configurations.compile.transitive = false
+
+dependencies {
+  compile gradleApi()
+}
+
+task sourcesJar(type: Jar) {
+  from sourceSets.main.allSource
+  archiveClassifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+  archiveClassifier = 'javadoc'
+  from javadoc.destinationDir
+}
+
+// This disables the pedantic doclint feature of JDK8
+if (JavaVersion.current().isJava8Compatible()) {
+  tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+  }
+}
