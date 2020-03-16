@@ -6,7 +6,9 @@ server you have to configure manually global npm configuration, for that it is r
 to add next lines:
 
 _auth=... # login:password encrypted with base64 encoding
+
 registry=... # path to your NPM group repository 
+
 always-auth=true
 
 How to create NPM group repository in your Nexus 3 read here: https://blog.sonatype.com/using-nexus-3-as-your-repository-part-2-npm-packages
