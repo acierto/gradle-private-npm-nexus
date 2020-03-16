@@ -55,7 +55,7 @@ pluginBundle {
   vcsUrl = 'https://github.com/gradle/gradle'
 
   plugins {
-    greetingsPlugin {
+    gradlePrivateNpmNexus {
       displayName = 'Gradle Private NPM Nexus'
     }
   }
