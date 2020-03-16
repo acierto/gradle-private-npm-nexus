@@ -56,6 +56,7 @@ pluginBundle {
 
   plugins {
     gradlePrivateNpmNexus {
+      description = 'Gradle plugin for generating the configuration to download npm packages from the private Nexus'
       displayName = 'Gradle Private NPM Nexus'
     }
   }
