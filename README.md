@@ -17,26 +17,12 @@ and corresponding 3 lines will be added to your .npmrc file (or file will be cre
 # Adding the plugin to your project 
 
 ```groovy
-buildscript {
-  repositories {
-    mavenLocal()
-    ["releases", "public", "snapshots", "alphas"].each { r ->
-      maven {
-        url "${nexusBaseUrl}/repositories/${r}"
-        credentials {
-          username nexusUserName
-          password nexusPassword
-        }
-      }
-    }
-  }
 
-  dependencies {
-    classpath "com.acierto.gradle:gradle-private-npm-nexus:0.0.2"
-  }
+plugins {
+  id "com.acierto.gradle" version "1.0.3"
 }
 
-apply plugin: 'acierto.private-nexus'
+apply plugin: 'com.acierto.private-npm-nexus'
 
 privateNpmNexus {
   nexusGroupUrl='http://nexus.your.organisation.com/repository/npm-group/' // http url as an example

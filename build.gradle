@@ -2,11 +2,12 @@ plugins {
   id "groovy"
   id "idea"
   id "maven"
+  id "java-gradle-plugin"
   id 'net.researchgate.release' version '2.6.0'
   id "com.gradle.plugin-publish" version "0.10.1"
 }
 
-group = 'com.acierto.gradle'
+group = 'com.acierto.private-npm-nexus'
 defaultTasks 'build'
 
 sourceCompatibility = 1.7
@@ -38,6 +39,26 @@ configurations.compile.transitive = false
 
 dependencies {
   compile gradleApi()
+}
+
+gradlePlugin {
+  plugins {
+    gradlePrivateNpmNexus {
+      id = 'com.acierto.private-npm-nexus'
+      implementationClass = 'com.acierto.gradle.plugins.PrivateNpmNexusPlugin'
+    }
+  }
+}
+
+pluginBundle {
+  website = 'http://www.gradle.org/'
+  vcsUrl = 'https://github.com/gradle/gradle'
+
+  plugins {
+    greetingsPlugin {
+      displayName = 'Gradle Private NPM Nexus'
+    }
+  }
 }
 
 afterReleaseBuild.dependsOn publishPlugins
