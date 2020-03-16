@@ -52,6 +52,7 @@ gradlePlugin {
 
 pluginBundle {
   website = 'https://github.com/acierto/gradle-private-npm-nexus'
+  vcsUrl = 'https://github.com/acierto/gradle-private-npm-nexus'
 
   plugins {
     gradlePrivateNpmNexus {
