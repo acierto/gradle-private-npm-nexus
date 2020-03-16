@@ -45,8 +45,8 @@ task sourcesJar(type: Jar) {
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-  archiveClassifier = 'javadoc'
   from javadoc.destinationDir
+  archiveClassifier = 'javadoc'
 }
 
 // This disables the pedantic doclint feature of JDK8
