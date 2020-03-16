@@ -47,5 +47,5 @@ privateNpmNexus {
 # Release a new version of plugin
 
 ```shell script
-./gradlew release -Prelease.useAutomaticVersion=true
+./gradlew release -Prelease.useAutomaticVersion=true -Prelease.releaseVersion=x.y.z
 ```

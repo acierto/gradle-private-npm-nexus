@@ -3,6 +3,7 @@ plugins {
   id "idea"
   id "maven"
   id 'net.researchgate.release' version '2.6.0'
+  id "com.gradle.plugin-publish" version "0.10.1"
 }
 
 group = 'com.acierto.gradle'
@@ -39,4 +40,4 @@ dependencies {
   compile gradleApi()
 }
 
-afterReleaseBuild.dependsOn uploadArchives
+afterReleaseBuild.dependsOn publishPlugins
