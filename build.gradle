@@ -39,19 +39,4 @@ dependencies {
   compile gradleApi()
 }
 
-task sourcesJar(type: Jar) {
-  from sourceSets.main.allSource
-  archiveClassifier = 'sources'
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-  from javadoc.destinationDir
-  archiveClassifier = 'javadoc'
-}
-
-// This disables the pedantic doclint feature of JDK8
-if (JavaVersion.current().isJava8Compatible()) {
-  tasks.withType(Javadoc) {
-    options.addStringOption('Xdoclint:none', '-quiet')
-  }
-}
+afterReleaseBuild.dependsOn uploadArchives
